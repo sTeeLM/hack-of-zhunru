@@ -570,7 +570,7 @@ static bool auth(const std::string client_id, const std::string & user, const st
 	//////////////////////////////////////////////////////push role///////////////////////////////////////////
 	// send in enc
 	//PUSH
-	//TIME:D?\034??T?\026x/\a\025rt?, //������MD5ô����������һ����ʺbug��?? bnac��ͬѧ��?
+	//TIME:D?\034??T?\026x/\a\025rt?, //又一个bug，你们直接把MD5放里面，不转码下么？
 	//SESSIONID:13756963409705689
 	//ROLE:1
 	if(!fill_time_str(auth_sock, time_str, session_id)) {
