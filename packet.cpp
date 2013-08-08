@@ -63,7 +63,7 @@ bool packet_t::option_exist(const std::string & key) const
     return m_options.find(key) != m_options.end();
 }
 
-
+// 尼玛，md5你们不转玛，我就不得不写这个特殊的赋值函数
 void packet_t::append_str(std::string & str, void * buffer, size_t len)
 {
     size_t i;
