@@ -52,7 +52,7 @@ static int g_quiet;
 static int g_nodaemon = 1;
 
 static struct option long_options[] = {
-                   {"server", 1, 0, 'S'},
+                   {"server", 1, 0, 's'},
                    {"port", 1, 0, 'P'},
                    {"user", 1, 0, 'u'},
                    {"password", 1, 0, 'p'},
@@ -840,8 +840,8 @@ int main(int argc, char *argv[])
             //const std::string & server, uint16_t port, std::string & session_id, int & cipher_num, bool & auth_fail)
         if(auth(client_id, user, password, server, port, session_id, cipher_num, auth_fail)) {
             shout("Login OK, Press Ctl-c to quit!\n");
-			shout("*do NOT quit program or you will be kick off*\n");
-			keep_alive(server, port, session_id, user, cipher_num);
+            shout("*do NOT quit program or you will be kick off*\n");
+            keep_alive(server, port, session_id, user, cipher_num);
         } else if(auth_fail){
             shout("Login FAILED!\n");
             exit_code = BNAC_ERR_AUTH_FAIL;
