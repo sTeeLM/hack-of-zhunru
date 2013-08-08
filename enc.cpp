@@ -4,6 +4,8 @@
 #include <openssl/aes.h>
 #include <openssl/rsa.h>
 
+
+// 设计这种算法简直是脑残
 static int32_t fib_seeds[20] = 
 {
 	1,2,3,5,9,1,2,7,1,3,5,6,7,8,8,9,3,7,4,6
