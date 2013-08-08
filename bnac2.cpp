@@ -373,8 +373,8 @@ static bool send_enc_packet(SOCKET sock, const packet_t & packet, int cipher_num
 	uint32_t n, r;
 	char buffer[4096];
 
-	// 这里还是一个bug，如果先发送4字节长度再发送数据，远程直接关连结
-	// 我们走的是TCP，这种低级bug很让人无语
+	// 这里还是一个bug，如果分两次调用send，先发送4字节长度包再发送数据包，远程直接关连结
+	// 我们走的是TCP不是UDP，TCP是流式的bnac的同学们，这种低级bug很让人无语
 
 	memset(buffer, 0, sizeof(buffer));
 	real_len = packet.to_buffer(buffer + sizeof(real_len), sizeof(buffer) - sizeof(real_len));
