@@ -41,7 +41,8 @@ static bool xor_fibonacci_crypt(void * buffer, size_t len, int cipher_num)
     return true;
 }
 
-// 这也很恼残，aes可以对任意长度数据加密的，不需要各种padding，aes-cfb啥的听说过么？
+// 这也很恼残，任何一个块加密算法都可以当流式用，不需要各种padding，aes-cfb啥的听说过么？
+// 而且，即使用分块，为毛不用cbc之类的模式呢？一块一块裸搞，基本没有啥安全性
 static bool aes_block_encrypt(void * buffer, size_t len)
 {
     AES_KEY key;
