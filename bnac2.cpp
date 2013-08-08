@@ -373,6 +373,9 @@ static bool send_enc_packet(SOCKET sock, const packet_t & packet, int cipher_num
 	uint32_t n, r;
 	char buffer[4096];
 
+	// è¿™é‡Œè¿˜æ˜¯ä¸€ä¸ªbugï¼Œå¦‚æœå…ˆå‘é€4å­—èŠ‚é•¿åº¦å†å‘é€æ•°æ®ï¼Œè¿œç¨‹ç›´æ¥å…³è¿ç»“
+	// æˆ‘ä»¬èµ°çš„æ˜¯TCPï¼Œè¿™ç§ä½çº§bugå¾ˆè®©äººæ— è¯­
+
 	memset(buffer, 0, sizeof(buffer));
 	real_len = packet.to_buffer(buffer + sizeof(real_len), sizeof(buffer) - sizeof(real_len));
 
@@ -567,7 +570,7 @@ static bool auth(const std::string client_id, const std::string & user, const st
 	//////////////////////////////////////////////////////push role///////////////////////////////////////////
 	// send in enc
 	//PUSH
-	//TIME:D?\034??T?\026x/\a\025rt?, //ÂãÌåµÄMD5Ã´£¿£¿Õâ¸öÊÇÒ»¸ö¹·Êºbug°É?? bnacµÄÍ¬Ñ§ÃÇ?
+	//TIME:D?\034??T?\026x/\a\025rt?, //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½MD5Ã´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Êºbugï¿½ï¿½?? bnacï¿½ï¿½Í¬Ñ§ï¿½ï¿½?
 	//SESSIONID:13756963409705689
 	//ROLE:1
 	if(!fill_time_str(auth_sock, time_str, session_id)) {
@@ -670,7 +673,7 @@ static void keep_alive(const std::string & server, uint16_t port, const std::str
 	//SESSIONID:13756963409705689
 	//USER:xxx
 	//AUTH_TYPE:DOMAIN
-	//HEARTBEAT_INDEX:1  // ²»¶ÏÀÛ»ı
+	//HEARTBEAT_INDEX:1  // ï¿½ï¿½ï¿½ï¿½ï¿½Û»ï¿½
 
 	packet.set_header("KEEP_ALIVE");
 	packet.set_option("SESSIONID", session_id.c_str());
