@@ -5,7 +5,7 @@
 #include <openssl/rsa.h>
 
 
-// 设计这种算法简直是脑残
+
 static int32_t fib_seeds[20] = 
 {
 	1,2,3,5,9,1,2,7,1,3,5,6,7,8,8,9,3,7,4,6
@@ -13,7 +13,7 @@ static int32_t fib_seeds[20] =
 
 static const char * aes_ukey = "\x16\x25\x3a\x48\x55\x69\x77\x8c\x94\xa7\xbe\xc1\xd4\xe2\xfd\x11";
 
-
+// 设计这种混淆算法简直是脑残，另外，你们设计了3种，为什么只用了一种呢？
 static bool xor_fibonacci_crypt(void * buffer, size_t len, int cipher_num)
 {
 	int64_t a, b, seed1, seed2;
@@ -41,6 +41,7 @@ static bool xor_fibonacci_crypt(void * buffer, size_t len, int cipher_num)
 	return true;
 }
 
+// 这也很恼残，aes可以对任意长度数据加密的，不需要各种padding，aes-cfb啥的听说过么？
 static bool aes_block_encrypt(void * buffer, size_t len)
 {
 	AES_KEY key;
