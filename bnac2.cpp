@@ -673,7 +673,7 @@ static void keep_alive(const std::string & server, uint16_t port, const std::str
 	//SESSIONID:13756963409705689
 	//USER:xxx
 	//AUTH_TYPE:DOMAIN
-	//HEARTBEAT_INDEX:1  // �����ۻ�
+	//HEARTBEAT_INDEX:1  // 不断累积
 
 	packet.set_header("KEEP_ALIVE");
 	packet.set_option("SESSIONID", session_id.c_str());
