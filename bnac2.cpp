@@ -144,11 +144,6 @@ static void show_usage(const std::string & prog)
 	shout("         -h --help                : show this screen\n");
 }
 
-static std::string rsa_enc_pass(const std::string & password)
-{
-	return std::string("");
-}
-
 bool init_socket()
 {
 #ifdef WIN32
@@ -844,8 +839,8 @@ int main(int argc, char *argv[])
 			//const std::string & server, uint16_t port, std::string & session_id, int & cipher_num, bool & auth_fail)
 		if(auth(client_id, user, password, server, port, session_id, cipher_num, auth_fail)) {
 			shout("Login OK, Press Ctl-c to quit!\n");
-            shout("*do NOT quit program or you will be kick off*\n");
-            keep_alive(server, port, session_id, user, cipher_num);
+                        shout("*do NOT quit program or you will be kick off*\n");
+                        keep_alive(server, port, session_id, user, cipher_num);
 		} else if(auth_fail){
 			shout("Login FAILED!\n");
 			exit_code = BNAC_ERR_AUTH_FAIL;
