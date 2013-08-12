@@ -781,6 +781,7 @@ int main(int argc, char *argv[])
             switch(c) {
             case 'c':
                 client_id = optarg;
+                break;
 #ifndef WIN32
             case 'f':
                 pid_file = optarg;
